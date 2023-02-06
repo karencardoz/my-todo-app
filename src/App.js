@@ -44,7 +44,6 @@ class App extends Component {
 
   onSubmitEditTodo = (e) => {
     e.preventDefault();
-
     this.onEditTodo(this.state.currentid, this.state.currentValue);
     this.setState({ editing: false });
   };
@@ -70,32 +69,30 @@ class App extends Component {
     ));
 
     return (
-      <>
         <div className="App">
           {this.state.editing === false ? (
             <form onSubmit={this.onAddTask}>
               <input
-                placeholder="typeyour task"
+                placeholder="type todo item"
                 value={this.state.value}
                 onChange={this.onChange}
               />
-              <button onClick={this.onAddTask}>Add Item</button>
+              <button onClick={this.onAddTask}>Create</button>
             </form>
           ) : (
             <form onSubmit={this.onSubmitEditTodo}>
               <input
-                placeholder="edit your task"
+                placeholder="edit your item"
                 value={this.state.currentValue}
                 name={this.state.currentValue}
                 onChange={this.onEditInputChange}
               />
-              <button onClick={this.onSubmitEditTodo}>Update Item</button>
+              <button onClick={this.onSubmitEditTodo}>Update</button>
             </form>
           )}
 
           <ul className="todo_wrapper">{mylist}</ul>
         </div>
-      </>
     );
   }
 }
